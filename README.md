@@ -50,7 +50,26 @@ capstone_project/
 
 ### Prerequisites
 - Python 3.7+
-- DeepSeek API key
+- DeepSeek API key ([Get one here](https://platform.deepseek.com/api_keys))
+
+### 🔐 Security Setup (Important!)
+
+**1. Set up your API key securely:**
+
+```bash
+# Copy the environment template
+cp .env.example .env
+
+# Edit .env and add your actual API key
+# Never commit this file to git!
+nano .env
+```
+
+**2. Set environment variable (alternative method):**
+
+```bash
+export DEEPSEEK_API_KEY='your-actual-api-key'
+```
 
 ### Dependencies
 ```bash

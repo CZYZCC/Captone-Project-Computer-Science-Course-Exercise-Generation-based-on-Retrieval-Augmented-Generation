@@ -375,7 +375,13 @@ class Pipeline:
         self.logger.log(f"Improvement:  {graph_avg - base_avg:.3f}")
 
 def main():
-    api_key = os.getenv("DEEPSEEK_API_KEY") or "sk-579409f87c4f44d0b3cd5b2d7e527618"
+    # Load API key from environment variable for security
+    api_key = os.getenv("DEEPSEEK_API_KEY")
+    if not api_key:
+        raise ValueError(
+            "DEEPSEEK_API_KEY environment variable not set.\n"
+            "Please set it using: export DEEPSEEK_API_KEY='your-key-here'"
+        )
     
     pipeline = Pipeline(api_key, "./experiment_logs_v4")
     

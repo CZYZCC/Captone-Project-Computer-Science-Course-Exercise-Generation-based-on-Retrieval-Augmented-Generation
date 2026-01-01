@@ -26,6 +26,12 @@ Thumbs.db
 # Logs
 *.log
 
-# API Keys (if any separate config files)
+# ⚠️ SECURITY: Never commit sensitive files
 .env
+.env.local
+.env.*.local
 config.ini
+secrets.json
+*_secret.py
+# API Keys and credentials
+api_keys.txt
