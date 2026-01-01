@@ -1,0 +1,89 @@
+Experiment Started at Thu Jan  1 22:53:42 2026
+==================================================
+
+============================================================
+Building Knowledge Graph
+============================================================
+Textbook 1: Added 152 nodes
+Textbook 2: Added 182 nodes
+Textbook 3: Added 110 nodes
+Textbook 4: Added 325 nodes
+Textbook 5: Added 93 nodes
+Textbook 6: Added 196 nodes
+Textbook 7: Added 87 nodes
+Textbook 8: Added 416 nodes
+Textbook 9: Added 119 nodes
+Textbook 10: Added 267 nodes
+Textbook 11: Added 109 nodes
+Textbook 12: Added 503 nodes
+Textbook 13: Added 160 nodes
+Textbook 14: Added 272 nodes
+Textbook 15: Added 233 nodes
+Textbook 16: Added 10 nodes
+Textbook 17: Added 568 nodes
+Textbook 18: Added 290 nodes
+Textbook 19: Added 385 nodes
+Textbook 20: Added 182 nodes
+   >>> Building Semantic Edges...
+   >>> Added 112 semantic edges.
+
+============================================================
+Starting Experiment
+============================================================
+
+>>> Topic 1/5: recursion
+   [Baseline] Retrieving 'recursion': Found 5 nodes.
+   [BASELINE] Score: 0.45 (Rel: 1.0, Faith: 1.0, Integ: 0.0, Comp: 0.5)
+   Q: Which of the following best illustrates the principle of recursion as described in the context, where a complex problem is broken down into simpler, self-similar subproblems?
+   Rationale: Step 1: Identified the Sun Zi quote from snippet [5] as the clearest analogy for recursion - control...
+   [GraphRAG] Found 3 seed nodes for 'recursion'.
+   [GRAPHRAG] Score: 0.90 (Rel: 0.0, Faith: 1.0, Integ: 1.0, Comp: 1.0)
+   Q: Considering the emphasis on algorithm communication from snippet [2] and the detailed specification requirements from snippet [6], how would you modify the lattice multiplication algorithm's description (implied in snippets [1] and [3]) to better teach its correctness while maintaining clarity about its O(mn) running time?
+   Rationale: Step 1: Identify relevant snippets - Snippet [2] emphasizes teaching algorithms effectively, snippet...
+
+>>> Topic 2/5: sorting algorithm
+   [Baseline] Retrieving 'sorting algorithm': Found 5 nodes.
+   [BASELINE] Score: 0.30 (Rel: 1.0, Faith: 1.0, Integ: 0.0, Comp: 0.0)
+   Q: Based on the provided context, which sorting algorithm is described as having the property that after splitting the array into sorted subarrays, merging them is trivial?
+   Rationale: Step 1: Identify relevant snippets about sorting algorithms. Snippet [2] explicitly describes Quicks...
+   [GraphRAG] Found 3 seed nodes for 'sorting algorithm'.
+   [GRAPHRAG] Score: 0.80 (Rel: 1.0, Faith: 0.0, Integ: 1.0, Comp: 1.0)
+   Q: In the context of recursive sorting algorithms, how does the concept of recursion depth in mergesort (as implied by its divide-and-conquer structure) relate to the role of leaves in the Build-Max-Heap procedure used in heapsort?
+   Rationale: Step 1: Identify relevant snippets. Snippet [10] describes mergesort's recursive divide-and-conquer ...
+
+>>> Topic 3/5: graph traversal
+   [Baseline] Retrieving 'graph traversal': Found 5 nodes.
+   [BASELINE] Score: 0.30 (Rel: 1.0, Faith: 1.0, Integ: 0.0, Comp: 0.0)
+   Q: Which of the following statements about graph traversal algorithms is supported by the provided context?
+   Rationale: Step 1: Extract relevant information from context snippets. From [1]: 'Prove that for every directed...
+   [GraphRAG] Found 3 seed nodes for 'graph traversal'.
+   [GRAPHRAG] Score: 0.90 (Rel: 1.0, Faith: 0.5, Integ: 1.0, Comp: 1.0)
+   Q: In the context of graph algorithms, how does the concept of a 'safe edge' in Jarník's algorithm for minimum spanning trees relate to the concept of 'source components' in Tarjan's algorithm for strongly connected components? Specifically, explain how the selection criteria in both algorithms ensure progress toward their respective goals.
+   Rationale: Step 1: Identify relevant snippets. Snippet [3] describes Jarník's algorithm and the concept of 'saf...
+
+>>> Topic 4/5: dynamic programming
+   [Baseline] Retrieving 'dynamic programming': Found 5 nodes.
+   [BASELINE] Score: 0.30 (Rel: 1.0, Faith: 1.0, Integ: 0.0, Comp: 0.0)
+   Q: Based on the provided context about dynamic programming, which of the following best describes the key advantage of replacing a memoized recurrence with a simple for-loop to fill an array?
+   Rationale: Step 1: Snippet [5] explicitly states: 'Dynamic Programming: Fill Deliberately. Once we see how the ...
+   [GraphRAG] Found 3 seed nodes for 'dynamic programming'.
+   [GRAPHRAG] Score: 0.96 (Rel: 1.0, Faith: 0.8, Integ: 1.0, Comp: 1.0)
+   Q: Consider the recurrence relation for the running time of a naive recursive Fibonacci algorithm, which is given as T(n) = T(n-1) + T(n-2) + O(1). Using the 'subtraction trick' method described for transforming recurrences, how would you derive a simplified recurrence for T(n) that eliminates the summation of terms, and what would the resulting closed-form time complexity be?
+   Rationale: Step 1: Extract the naive Fibonacci recurrence from snippet [5], which states: 'Let T(n) denote the ...
+
+>>> Topic 5/5: hash table
+   [Baseline] Retrieving 'hash table': Found 5 nodes.
+   [BASELINE] Score: 0.30 (Rel: 1.0, Faith: 1.0, Integ: 0.0, Comp: 0.0)
+   Q: According to the comparison of graph data structures in the context, what does a star (*) indicate in the performance table?
+   Rationale: Step 1: Identify relevant snippet - Snippet [3] discusses 'Comparison' and 'Table 5.1' about graph d...
+   [GraphRAG] Found 3 seed nodes for 'hash table'.
+   [GRAPHRAG] Score: 1.00 (Rel: 1.0, Faith: 1.0, Integ: 1.0, Comp: 1.0)
+   Q: In the context of graph data structures, snippet [1] mentions that dynamic hash tables have expected amortized time bounds, while snippet [5] discusses representing neighbor lists for graph nodes. Considering that hash tables can be used to implement adjacency lists, how might the amortized time complexity of dynamic hash tables affect the efficiency of operations like listing all neighbors of a node when compared to using a simple singly-linked list for the neighbor list?
+   Rationale: Step 1: Identify relevant concepts from snippet [1]: It mentions 'expected amortized time bounds for...
+
+============================================================
+Final Summary
+============================================================
+Baseline Avg: 0.330
+GraphRAG Avg: 0.912
+Improvement:  0.582
