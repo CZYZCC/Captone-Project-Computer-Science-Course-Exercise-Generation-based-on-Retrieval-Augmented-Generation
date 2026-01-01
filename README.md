@@ -37,12 +37,17 @@ Evaluates generated questions on 4 metrics:
 capstone_project/
 ├── graphrag_mvp.py                      # Main pipeline implementation
 ├── GraphRAG-Bench/                      # Dataset of CS textbooks
-│   ├── textbooks/                       # 20 structured textbooks
-│   └── questions/                       # Question templates
+│   ├── textbooks/                       # 20 structured JSON textbooks
+│   │   ├── textbook1/
+│   │   ├── textbook2/
+│   │   └── ... (textbook3-20)
+│   └── questions/                       # Question templates (FB, MC, MS, OE, TF)
 ├── experiment_logs_v4/                  # Latest experiment results
 │   ├── experiment_log.txt               # Detailed execution log
 │   └── generated_questions/             # JSON artifacts per topic
-├── thesis_results/                      # Previous experiment data
+│       ├── recursion_baseline.json
+│       ├── recursion_graphrag.json
+│       └── ... (other topics)
 └── README.md                            # This file
 ```
 
@@ -51,25 +56,6 @@ capstone_project/
 ### Prerequisites
 - Python 3.7+
 - DeepSeek API key ([Get one here](https://platform.deepseek.com/api_keys))
-
-### 🔐 Security Setup (Important!)
-
-**1. Set up your API key securely:**
-
-```bash
-# Copy the environment template
-cp .env.example .env
-
-# Edit .env and add your actual API key
-# Never commit this file to git!
-nano .env
-```
-
-**2. Set environment variable (alternative method):**
-
-```bash
-export DEEPSEEK_API_KEY='your-actual-api-key'
-```
 
 ### Dependencies
 ```bash
@@ -81,7 +67,46 @@ pip install openai
 pip install sentence-transformers numpy
 ```
 
+### 🔐 API Key Configuration
+
+**Important:** For security reasons, API keys should be stored as environment variables, not hardcoded in source files.
+
+**Method 1: Environment Variable (Recommended)**
+```bash
+export DEEPSEEK_API_KEY='your-api-key-here'
+python graphrag_mvp.py
+```
+
+**Method 2: Create a local .env file (Advanced)**
+```bash
+# Create .env file (this file is gitignored and won't be committed)
+echo "DEEPSEEK_API_KEY='your-api-key-here'" > .env
+
+# Load environment variables before running
+source .env
+python graphrag_mvp.py
+```
+
+> ⚠️ **Security Note**: Never commit API keys to version control. The `.gitignore` file is configured to exclude `.env` files and other sensitive data.
+
 ## Usage
+
+### Quick Start
+
+1. **Set your API key:**
+   ```bash
+   export DEEPSEEK_API_KEY='your-api-key-here'
+   ```
+
+2. **Run the experiment:**
+   ```bash
+   python graphrag_mvp.py
+   ```
+
+3. **View results:**
+   - Console output shows real-time progress and scores
+   - Detailed logs: `experiment_logs_v4/experiment_log.txt`
+   - Generated questions: `experiment_logs_v4/generated_questions/`
 
 ### Basic Execution
 ```bash
@@ -89,10 +114,11 @@ python graphrag_mvp.py
 ```
 
 ### Configuration
-Edit the `main()` function in `graphrag_mvp.py`:
+The main pipeline automatically loads the API key from the `DEEPSEEK_API_KEY` environment variable. 
+
+**Topics can be customized** by editing the `main()` function in `graphrag_mvp.py`:
 
 ```python
-# Topics to generate questions for
 topics = [
     "recursion", 
     "sorting algorithm", 
@@ -101,10 +127,7 @@ topics = [
     "hash table"
 ]
 
-# API Key (can also use environment variable DEEPSEEK_API_KEY)
-api_key = os.getenv("DEEPSEEK_API_KEY") or "your-api-key-here"
-
-# Output directory
+# Output directory for experiment results
 output_dir = "./experiment_logs_v4"
 ```
 
@@ -170,6 +193,21 @@ Improvement:  +0.278
 
 **H3**: GraphRAG maintains **comparable Faithfulness** to baseline (factual accuracy).
 
+## Dataset
+
+### GraphRAG-Bench
+The project uses the **GraphRAG-Bench** dataset, which contains:
+- **20 Computer Science textbooks** covering topics like algorithms, data structures, complexity theory
+- **Structured JSON format** with metadata (chapter, section, content)
+- **Question templates** in 5 formats:
+  - **MC** (Multiple Choice)
+  - **TF** (True/False)
+  - **FB** (Fill in the Blank)
+  - **MS** (Multiple Selection)
+  - **OE** (Open Ended)
+
+All textbook data is included in the `GraphRAG-Bench/textbooks/` directory.
+
 ## Future Enhancements
 
 1. **Advanced Graph Construction**
@@ -194,13 +232,28 @@ Improvement:  +0.278
 - **Institution**: The Hong Kong Polytechnic University
 - **Project Type**: Capstone Project (Computer Science)
 
+## Repository
+- **GitHub**: [Capstone Project - GraphRAG Question Generation](https://github.com/CZYZCC/Captone-Project-Computer-Science-Course-Exercise-Generation-based-on-Retrieval-Augmented-Generation)
+- **Latest Update**: January 2, 2026
+
 ## License
 This project is for academic purposes only.
 
 ## Acknowledgments
-- GraphRAG-Bench dataset for CS textbooks
-- DeepSeek for LLM API access
-- Research on Graph RAG methodologies
+- **GraphRAG-Bench** dataset for CS textbooks
+- **DeepSeek** for LLM API access
+- Research on Graph-based Retrieval-Augmented Generation methodologies
+
+## Security & Best Practices
+
+### API Key Management
+- ✅ API keys are loaded from environment variables
+- ✅ `.gitignore` configured to exclude sensitive files
+- ✅ No hardcoded credentials in source code
+
+### Recommended Tools
+- **GitGuardian**: Monitor repository for exposed secrets ([Setup Guide](https://dashboard.gitguardian.com/))
+- **Pre-commit hooks**: Prevent accidental credential commits
 
 ---
 
